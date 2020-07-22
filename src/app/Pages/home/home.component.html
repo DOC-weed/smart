@@ -1,0 +1,210 @@
+<div class=" bg-light text-center">
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#114358;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+        <a class="navbar-brand">CEOS NEW MEDIA</a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="home">Crear contrato</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Contratos creados
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="https://ipfs.io/ipfs/{{item}}" target="_blank" *ngFor="let item of aHash">{{item}}</a>
+                    </div>
+                </li>
+            </ul>
+
+
+            <span class="badge badge-danger" (click)="cerrarsesion()">Cerrar sesión</span>
+        </div>
+    </nav>
+</div>
+
+<!-- NOMBRE DEL CONTRATO -->
+<div class="container">
+
+    <div class=" my-5 text-center form-group " *ngIf="blnMostrar3==true">
+        <h3 class="text-center my-3">Nombre del contrato</h3>
+
+        <form #myformname="ngForm" (ngSubmit)="abrir2()">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Nombre del contrato" name="contract" #contract="ngModel" [(ngModel)]="strContactName" [ngClass]="{'is-invalid':!contract.valid&&contract.touched, 'is-valid': contract.valid}" required>
+                <div class="invalid-feedback">
+                    Ingrese el nombre del contrato.
+                </div>
+            </div>
+            <button class="btn btn-warning my-3" style="background-color:#f2aa1f; color:#f1ece7;" [disabled]="!myformname.valid" type="submit">Siguiente</button>
+        </form>
+
+
+
+    </div>
+    <!-- DATOS DE LOS CLIENTES -->
+    <div *ngIf="blnMostrar2==false" class="my-5">
+        <h3 class="text-center my-3">Datos del cliente</h3>
+
+        <form #myForm="ngForm" (ngSubmit)="guardardatos()">
+            <div class="form-group">
+                <label>Nombre completo</label>
+                <input type="text" class="form-control" name="nam" #nam="ngModel" [(ngModel)]="strNombreClient" [ngClass]="{ 'is-invalid': !nam.valid && nam.touched,'is-valid': nam.valid}" required>
+                <div class="invalid-feedback">
+                    Ingrese un nombre.
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Correo electrónico</label>
+                <input type="text" class="form-control" placeholder="example@mail.com" name="email" #email="ngModel" [(ngModel)]="strEmailClient" [ngClass]="{ 'is-invalid': !email.valid && email.touched,'is-valid': email.valid}" required>
+                <div class="invalid-feedback">
+                    Ingrese un correo electrónico.
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Telefono</label>
+                <input type="number" class="form-control" name="tel" #tel="ngModel" [(ngModel)]="intTelClient" [ngClass]="{ 'is-invalid': !tel.valid && tel.touched,'is-valid': tel.valid}" required>
+                <div class="invalid-feedback">
+                    Ingrese un número de contacto.
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Empresa</label>
+                <input type="text" class="form-control" name="empresa" #empresa="ngModel" [(ngModel)]="strEmpresaClient" [ngClass]="{ 'is-invalid': !empresa.valid && empresa.touched,'is-valid': empresa.valid}" required>
+                <div class="invalid-feedback">
+                    Ingrese el nombre de la empresa.
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-warning mx-1" type="button" style="background-color:#f2aa1f; color:#f1ece7;" (click)="anterior2()">Anterior</button>
+                <button class="btn btn-warning" [disabled]="!myForm.valid" style="background-color:#f2aa1f; color:#f1ece7;" type="submit">Siguiente</button>
+            </div>
+        </form>
+    </div>
+    <!-- CLAUSULAS POR PARTE DE CEOS Y LOS CLIENTES -->
+
+    <div class="my-5" *ngIf="blnMostrar==true">
+        <h3 class="text-center my-3">Cláusulas del contrato</h3>
+        <div class="accordion my-3" id="accordionExample">
+            <div class="card">
+                <div class="card-header text-center" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Cláusulas por parte de Ceos
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse show " aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <form #myform09="ngForm">
+                            <div class="my-3 row">
+                                <div class="form-group col">
+                                    <label>Nombre</label>
+                                    <input type="text" class="form-control" name="titulo2" #titulo2="ngModel" [ngClass]="{'is-invalid': !titulo2.valid&&titulo2.touched,'is-valid': titulo2.valid}" [(ngModel)]="strTitulo" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese un nombre.
+                                    </div>
+                                </div>
+                                <div class="form-group col">
+                                    <label>Contenido</label>
+                                    <input type="text" class="form-control" name="descrip2" #descrip2="ngModel" [ngClass]="{'is-invalid': !descrip2.valid&&descrip2.touched, 'is-valid': descrip2.valid}" [(ngModel)]="strDescrip" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el contenido.
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <button class="btn btn-outline-primary" [disabled]="!myform09.valid" type="button" (click)="agregar()">Agregar</button>
+                    </div>
+                    <div class="container text-center">
+                        <table class="table table-bordered" id="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col-2">Nombre</th>
+                                    <th scope="col-3">Contenido</th>
+                                    <th scope="col-1"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of Clausulas; let index=index">
+                                    <th scope="row">{{index + 1}}</th>
+                                    <td>{{item.Nombre}}</td>
+                                    <td>{{item.Contenido}}</td>
+                                    <td><button class="btn btn-outline-danger" (click)="eliminar(index)">Borrar</button></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header text-center" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Cláusulas por parte del Cliente
+        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+
+                    <div class="card-body my-3">
+                        <form #myfor43="ngForm">
+                            <div class="my-3 form-row">
+                                <div class="form-group col">
+                                    <label>Nombre</label>
+                                    <input type="text" class="form-control" name="titulo" #titulo="ngModel" [(ngModel)]="strTitulocli" [ngClass]="{'is-invalid':!titulo.valid&&titulo.touched, 'is-valid':titulo.valid}" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese un nombre.
+                                    </div>
+                                </div>
+                                <div class="form-group col">
+                                    <label>Contenido</label>
+                                    <input type="text" class="form-control" name="descrip" #descrip="ngModel" [(ngModel)]="strDescripcli" [ngClass]="{'is-invalid': !descrip.valid&&descrip.touched, 'is-valid': descrip.valid}" required>
+                                    <div class="invalid-feedback">
+                                        Ingrese el contenido.
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <button class="btn btn-outline-primary" [disabled]="!myfor43.valid" type="button" (click)="agregarcli()">Agregar</button>
+                    </div>
+
+                    <div class="container text-center">
+                        <table class="table table-bordered" id="table1">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col-2">Nombre</th>
+                                    <th scope="col-3">Contenido</th>
+                                    <th scope="col-1"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of ClausulasC; let index=index">
+                                    <th scope="row">{{index + 1}}</th>
+                                    <td>{{item.Nombre}}</td>
+                                    <td>{{item.Contenido}}</td>
+                                    <td><button class="btn btn-outline-danger" (click)="eliminarcli(index)">Borrar</button></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-warning mx-1" type="button" style="background-color:#f2aa1f; color:#f1ece7;" (click)="anterior()">Anterior</button>
+            <button class="btn btn-secondary mx-1 my-3" type="button" (click)="GeneratePDF()">Terminar</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="login" class="text-centers my-5  border border-dark p-4" style="background-color:#114358; border-radius: 10px; margin-left: auto;width: 412px; margin-right: auto; @media screen and (max-width:500px){ #login{width:300px}}">
+        <form class="form-signin my-5 text-center" #myform="ngForm" (ngSubmit)="Login(myform)" style="background-color:#114358;">
+
+            <h1 class="h3 mb-3" style="color:#f1ece7">Inicie sesión</h1>
+            <div class="form-group">
+                <label for="inputEmail" class="sr-only">Correo electrónico</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="example@.correo.com" name="email" #email="ngModel" [(ngModel)]="strEmail" [ngClass]="{'is-invalid': email.invalid&&email.touched,'is-valid':email.valid}" required autofocus>
+                <div class="invalid-feedback">
+                    Ingrese un correo electrónico valido.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="sr-only">Contraseña</label>
+                <input type="password" id="inputPassword" class="form-control " placeholder="Contraseña" name="pass" #pass="ngModel" [(ngModel)]="strPassword" [ngClass]="{'is-invalid': pass.invalid&&pass.touched, 'is-valid': pass.valid}" required>
+                <div class="invalid-feedback">
+                    Ingrese una contraseña.
+                </div>
+            </div>
+            <button class="btn btn-lg btn-dark btn-block" style="background-color:#f2aa1f; color:#f1ece7;" [disabled]="!myform.valid" type="submit">Entrar</button>
+            <p class="mt-5 mb-3 text-muted" style=" color:#f1ece7;">Ceos New Media Agency</p>
+
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

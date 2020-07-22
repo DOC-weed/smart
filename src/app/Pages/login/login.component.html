@@ -1,0 +1,23 @@
+<div id="login" class="text-center container p-4 my-5  border border-dark" style="background-color:#114358; border-radius: 10px; width: 412px; margin-left: auto; margin-right: auto ;">
+    <form class="form-signin my-5 text-center" #myform="ngForm" (ngSubmit)="Login(myform)" style="background-color:#114358;">
+
+        <h1 class="h3 mb-3" style="color:#f1ece7">Inicie sesión</h1>
+        <div class="form-group">
+            <label for="inputEmail" class="sr-only">Correo electrónico</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="example@.correo.com" name="email" #email="ngModel" [(ngModel)]="strEmail" [ngClass]="{'is-invalid': email.invalid&&email.touched,'is-valid':email.valid}" required autofocus>
+            <div class="invalid-feedback">
+                Ingrese un correo electrónico valido.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="sr-only">Contraseña</label>
+            <input type="password" id="inputPassword" class="form-control " placeholder="Contraseña" name="pass" #pass="ngModel" [(ngModel)]="strPassword" [ngClass]="{'is-invalid': pass.invalid&&pass.touched, 'is-valid': pass.valid}" required>
+            <div class="invalid-feedback">
+                Ingrese una contraseña.
+            </div>
+        </div>
+        <button class="btn btn-lg btn-dark btn-block" style="background-color:#f2aa1f; color:#f1ece7;" [disabled]="!myform.valid" type="submit">Entrar</button>
+        <p class="mt-5 mb-3 text-muted" style=" color:#f1ece7;">Ceos New Media Agency</p>
+
+    </form>
+</div>

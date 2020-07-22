@@ -1,0 +1,48 @@
+<div >
+    <div class="text-center">
+        <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#114358;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+            <a class="navbar-brand" href="#">CEOS NEW MEDIA</a>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="home">Crear contrato</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Contratos creados
+                    </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" (click)="copiarhash(item)" *ngFor="let item of aHash">{{item}}</a>
+                        </div>
+                    </li>
+                </ul>
+
+
+                <span class="badge badge-danger" (click)="cerrarsesion()">Cerrar sesión</span>
+            </div>
+        </nav>
+    </div>
+    <div class="text-center my-5 container-sm ">
+        <h3>Sube el archivo llamado {{contractName}}</h3>
+        <div class="my-3">
+            <form #myform="ngForm" (ngSubmit)="upload(myform)">
+                <div class="form-group">
+                    <input type="file" name="data" #data id="contract" class="form-control" [ngClass]="{ 'is-invalid': !data.valid && data.touched,'is-valid': data.valid}" required>
+                    <div class="invalid-feedback">
+                        Suba el archivo correspondiente.
+                    </div>
+                </div>
+                <button class="btn btn-warning my-3" type="submit" style="background-color:#f2aa1f; color:#f1ece7;" [disabled]="!myform.valid">Subir</button>
+            </form>
+
+        </div>
+
+
+
+    </div>
+
+</div>
