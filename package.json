@@ -24,7 +24,7 @@
     "firebase": "^7.15.5",
     "html2canvas": "^1.0.0-rc.5",
     "ipfs-http-client": "^44.2.0",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "jspdf-autotable": "^3.5.4",
     "pdfmake": "^0.1.66",
     "rxjs": "~6.5.4",
